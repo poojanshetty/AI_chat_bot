@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+{% block head %}
+    <title>AI Chat Assistant</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <style>
+        /* Ensure video covers the full screen */
+        html, body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        #myVideo {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* To maintain aspect ratio */
+        }
+    </style>
+{% endblock %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head></head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Test</title>
+</head>
+<body>
+    <img src="static/templates/ai_bot.jpg" alt="AI Bot Image">
+</body>
+{% block content %}
+
+    <video id="myVideo" autoplay muted loop>
+        <source src="static/templates/Company_Intro.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var video = document.getElementById("myVideo");
+
+            // Check if the video can play
+            video.addEventListener('canplay', function() {
+                video.play();
+            });
+
+            // Handle any errors
+            video.addEventListener('error', function(e) {
+                console.error('Video error:', e);
+            });
+        });
+    </script>
+{% endblock %}
+</html>
